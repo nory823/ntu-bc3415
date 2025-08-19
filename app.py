@@ -5,7 +5,6 @@ from flask import Flask,request,render_template
 app = Flask(__name__) # to confirm the application is written by you
 
 @app.route("/",methods = ["GET","POST"]) # able to get and post
-
 def index():
     return(render_template("index.html"))
 
@@ -13,6 +12,12 @@ def index():
 def main():
     #database
     return(render_template("main.html"))
+
+@app.route("/dbs",methods = ["GET","POST"])
+def dbs():
+    #database
+    q=float(request.form.get("q"))
+    return render_template("dbs.html",r=(-50.6*q)+90.2)
 
 if __name__ == "__main__": # to confirm you want to run the vofr
     app.run()
